@@ -1,0 +1,28 @@
+<div class="container-principal-infos  background-primary-color">
+  <div class="infos">
+    <div class="container-home-insurance">
+      <div class="container-logo-infos">
+        <img src="assets/icons/itau-logo@2x.svg" alt="Logo Itáu">
+      </div>
+
+    </div>
+    <div class="container-text-infos"  >
+      <div class="data-insurance">
+        <div class="title-info-insurance white-color text-size-30">
+          seguro residencial
+        </div>
+        <div class="paragraph-description white-color text-size-20" *ngIf="!inputIsFilled">
+          existe coisa melhor do que se sentir seguro em casa? <br><br> encontre o plano residencial ideal pra você
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fullscreen container-fullscreen-button show-hide-icon">
+    <div class="close-fullscreen fullscreen-icon-layout primary-color" (click)="closeInfosHomeInsurance()" >
+      <mat-icon>close_fullscreen</mat-icon>
+    </div>
+
+  </div>
+</div>
+
+

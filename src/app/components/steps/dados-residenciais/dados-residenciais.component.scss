@@ -1,0 +1,34 @@
+@import "/src/styles.scss";
+@import "/src/assets/styles/colors";
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: $--primary-color;
+}
+
+.mat-form-field {
+  display: block;
+}
+mat-vertical-stepper{
+  padding: 0 14px 0 0;
+}
+.container-seguro {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: $--grey-F3;
+}
+@media only screen and(min-width:1024px) {
+  .form-data-personal{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 80px;
+  }
+}
+@media only screen and(min-width:1150px) {
+  .text-autorization{
+    font-size: 12px;
+  }
+  .container-text-autorization{
+    margin-top: 20px ;
+  }
+}

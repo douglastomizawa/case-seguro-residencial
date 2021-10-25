@@ -1,0 +1,98 @@
+<div class="container-cobertura-seguro-select">
+  <p class="text-title grey-text-color">
+    coberturas escolhidas  </p>
+  <div class="container-cards">
+    <!-- [ngClass]="getIndexOf(cobertura) ? 'selected':'unselected'" *ngFor="let cobertura of coberturas" [id]="cobertura.id_cobertura" (click)="cardSelected(cobertura)" -->
+    <div class="card selected result"
+    [ngClass]="verificaCoberturaSelecionada(cobertura.id_cobertura) != -1 ? 'show':'hide'"
+    *ngFor="let cobertura of presistenciaCoberturaData" [id]="cobertura.id_cobertura" (click)="removeAddCobertura(cobertura)">
+      <div *ngIf="verificaCoberturaSelecionada(cobertura.id_cobertura) != -1" class="container-card-result">
+
+      <div class="container-first width-100">
+        <div class="card-title">
+          {{getValuesCardsSelected(cobertura.id_cobertura).nome}}
+          as
+        </div>
+        <div class="card-text">
+          {{getValuesCardsSelected(cobertura.id_cobertura).resumo}}
+        </div>
+      </div>
+      <div class="container-second width-100">
+        <div class="container-prices">
+          <div class="price-segurado text-size-16 select-container-price">
+            <div>
+              cobertura de até
+            </div>
+            <div class="price">
+             R${{(cobertura.importancia_segurada | number:'1.0-0':'pt-BR')}}
+            </div>
+          </div>
+          <div class="price-pagar text-size-16 select-container-price">
+            <div>
+              com parcelas de
+            </div>
+            <div class="price">
+              R${{(cobertura.valor / 6 | number:'1.0-0':'pt-BR')}}
+            </div>
+            <div class="text-size-14">
+              ou R${{(cobertura.valor| number:'1.0-0':'pt-BR')}} à vista
+            </div>
+          </div>
+        </div>
+        <div class="container-button-dialog">
+          <div class="button-dialog-info">
+            i
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-cobertura-seguro">
+  <p class="text-title grey-text-color">
+    agora que já viu os valores, quer incluir mais coberturas?
+  </p>
+  <div class="container-cards">
+    <!-- [ngClass]="getIndexOf(cobertura) ? 'selected':'unselected'" *ngFor="let cobertura of coberturas" [id]="cobertura.id_cobertura" (click)="cardSelected(cobertura)" -->
+    <div class="card  unselected"
+    [ngClass]="verificaCoberturaSelecionada(cobertura.id_cobertura) == -1 ? 'show':'hide'"
+    *ngFor="let cobertura of presistenciaCoberturaData" [id]="cobertura.id_cobertura"  (click)="removeAddCobertura(cobertura)">
+      <div class="container-first">
+        <div class="card-title">
+          {{getValuesTodosCards(cobertura.id_cobertura)?.nome}}
+        </div>
+      </div>
+      <div class="container-second">
+        <div class="container-prices">
+          <div class="price-segurado text-size-12">
+            <div>
+              cobertura de até
+            </div>
+            <div  class="price">
+              R${{(cobertura.importancia_segurada | number:'1.0-0':'pt-BR')}}
+            </div>
+          </div>
+          <div class="price-pagar text-size-12">
+            <div>
+              com parcelas de
+            </div>
+            <div  class="price">
+              R${{(cobertura.valor / 6 | number:'1.0-0':'pt-BR')}}
+            </div>
+            <div class="text-size-10">
+              ou R${{(cobertura.valor | number:'1.0-0':'pt-BR')}} à vista
+            </div>
+          </div>
+        </div>
+        <div class="container-button-dialog">
+          <div class="button-dialog-info">
+            i
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

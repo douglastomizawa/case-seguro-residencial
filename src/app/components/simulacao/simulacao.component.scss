@@ -1,0 +1,73 @@
+.principal-container {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  width: 100vw;
+  height: 100vh;
+}
+.container-show-and-hide {
+  display: block;
+}
+.container-infos-home {
+  display: none;
+
+}
+.home-insurance-container {
+  position: relative;
+  width: 100vw;
+  height: 60px;
+  padding: 10px 40px;
+}
+.container-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  > img {
+    height: 100%;
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .material-icons {
+    font-size: 35px;
+  }
+}
+.text-infos {
+  margin-top: 20px;
+}
+@media only screen and(min-width:1024px) {
+  .container-desktop {
+    display: grid;
+    grid-template-rows: 30% 70%;
+  }
+  .principal-container {
+    display: grid;
+    grid-template-rows: 100%;
+    width: 100vw;
+    height: 100vh;
+  }
+  .container-infos-home {
+    display: block;
+  }
+  .container-show-and-hide {
+    display: none;
+  }
+}
+@media only screen and(min-width:1150px) {
+  .container-desktop {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100%;
+  }
+  .principal-container {
+    grid-template-rows: 100%;
+  }
+  .container-router-infos {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

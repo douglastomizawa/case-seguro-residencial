@@ -1,0 +1,138 @@
+@import '/src/assets/styles/colors';
+@import '/src/styles.scss';
+
+.width-100 {
+   width: 100%;
+}
+.container-cobertura-seguro, .container-cobertura-seguro-select {
+  .container-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center;
+    margin: auto;
+    @media screen and(min-width: 602px) {
+      justify-content: flex-start;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: 5px;
+      padding: 20px;
+      cursor: pointer;
+      max-width: 270px;
+      height: 200px;
+      min-width: 200px;
+      width: 100%;
+      border-radius: 10px;
+      .container-button-dialog {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .button-dialog-info {
+        font-size: 17px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 100%;
+        background-color:  $--btn-disabled;
+        color: $--white;
+      }
+      .card-title {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+    }
+
+    .container-prices {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      border-top: 1px solid $--all-text-color;
+      padding-top: 10px;
+    }
+    .unselected {
+      color: $--all-text-color;
+      background-color: $--white;
+      border: 1px solid $--btn-disabled;
+      &:hover {
+
+        border: 1px solid $--primary-color;
+        .button-dialog-info {
+            background-color: $--primary-color;
+        }
+      }
+      .card-title {
+        color: $--primary-color;
+      }
+
+
+      .container-prices {
+        border-top: 1px solid $--all-text-color;
+      }
+    }
+    .price {
+      font-weight: 400;
+    }
+    .container-card-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .show {
+      display: flex;
+    }
+    .hide {
+      display: none;
+    }
+    .selected {
+      &.card {
+        max-width: 440px;
+        height: 290px;
+        min-width: 400px;
+      }
+      .select-container-price {
+        font-weight: 300;
+      }
+
+      background-color: $--primary-color;
+      .button-dialog-info {
+        background-color: $--white;
+      }
+      .card-title {
+        color: $--white;
+      }
+      .card-text {
+        color: $--white;
+      }
+      .button-dialog-info{
+        color: $--primary-color;
+      }
+      .container-prices {
+        color: $--white;
+        border-top: 1px solid $--white;
+      }
+
+    }
+    .container-second {
+      width: 100%;
+
+    }
+
+  }
+}
+.container-cobertura-seguro-select {
+  margin-bottom: 60px;
+  .card {
+    max-width: 440px;
+    height: 290px;
+    min-width: 280px;
+    width: 100%;
+  }
+}
