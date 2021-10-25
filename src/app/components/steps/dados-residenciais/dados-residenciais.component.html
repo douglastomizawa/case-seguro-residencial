@@ -1,0 +1,69 @@
+<div class="container-data-personal">
+  <p class="text-title grey-text-color">
+    agora precisamos de alguns dados sobre sua residência
+  </p>
+  <form class="form-data-personal" [formGroup]="residencialData">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>CEP *</mat-label>
+      <input matInput formControlName="cep"
+      autocomplete="cep"
+      [errorStateMatcher]="matcher"
+      (input)='validatorForm()'
+      mask="00000-000"
+      [value]="(residencialData$ | async)?.cep || ''"
+      (ngModelChange)="functionsService.changePessoalValueRedux('cep', $event); getInfoCep($event)"
+      type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>logradouro *</mat-label>
+      <input matInput
+      formControlName="logradouro"
+      autocomplete="logradouro"
+      type="text "
+      [value]="(residencialData$ | async)?.logradouro|| ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('logradouro', $event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>número *</mat-label>
+      <input matInput formControlName="numero" autocomplete="off"
+      [value]="(residencialData$ | async)?.numero || ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('numero', $event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>complemento</mat-label>
+      <input matInput formControlName="complemento"
+      [value]="(residencialData$ | async)?.complemento|| ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('complemento', phoneModel)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>bairro *</mat-label>
+      <input matInput formControlName="bairro" autocomplete="off"
+      [value]="(residencialData$ | async)?.bairro|| ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('bairro', $event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>cidade *</mat-label>
+      <input matInput formControlName="localidade" autocomplete="off"
+      [value]="(residencialData$ | async)?.localidade|| ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('localidade', $event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>estado *</mat-label>
+      <input matInput formControlName="estado" autocomplete="off"
+      [value]="(residencialData$ | async)?.uf || ''"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changeResidencialValueRedux('uf', $event)">
+    </mat-form-field>
+  </form>
+</div>

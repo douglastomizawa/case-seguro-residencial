@@ -1,0 +1,19 @@
+  <p class="text-about-insurance text-title">
+    nos conte um pouco sobre as condições do imóvel
+  </p>
+  <div class="type-insurance" *ngFor="let question of questions" [id]="question.id_questao" >
+    <div *ngIf="question.id_questao != idSelectCasa || (selectCasa)">
+    <p class="text-select-option text-size-20">
+      {{question.texto_questao}} *
+    </p>
+    <mat-radio-group
+    (change)="checkQuestion(question.id_questao, $event.value)"
+    class="radio-group">
+      <mat-radio-button
+      *ngFor="let resposta of question.respostas"
+      [value]="resposta.id_resposta"
+      [checked]='false'
+      class="radio-option">{{resposta.texto_resposta}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  </div>

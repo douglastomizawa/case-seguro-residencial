@@ -1,0 +1,142 @@
+
+<ng-template #stepOne>
+
+  <app-dados-pessoais></app-dados-pessoais>
+
+</ng-template>
+<ng-template #stepTwo>
+  <app-dados-residenciais></app-dados-residenciais>
+
+</ng-template>
+
+<ng-template #stepThree>
+  <app-sobre-seguro></app-sobre-seguro>
+</ng-template>
+
+
+<ng-template #stepFour>
+  <app-cobertura-seguro></app-cobertura-seguro>
+</ng-template>
+<ng-template #stepFive>
+  <app-resultado></app-resultado>
+
+</ng-template>
+<!-- <form [formGroup]="secondActive" class="disp-none">
+  <input formControlName="stepper" [(ngModel)]='stepperTrue' [value]="stepperTrue">
+</form>
+<form [formGroup]="thirdActive" class="disp-none">
+  <input formControlName="stepper" [(ngModel)]='stepperTrue2' [value]="stepperTrue2">
+</form> -->
+
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+  <mat-vertical-stepper #stepperV [linear]="true">
+    <mat-step label='Dados pessoais' [stepControl]="secondActive">
+      <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+      <div class="container-button">
+      <button
+      at-button
+      [ngClass]="!(validatorData$|async)?.pessoalDataValid ? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+      [disabled]="!(validatorData$|async)?.pessoalDataValid"
+      (click)="nextPage(true, stepperV)"> Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step label='dados residenciais' [completed]="false" [stepControl]="thirdActive">
+      <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+      <div class="container-button">
+        <button at-button class="button-back btn-layout" matStepperPrevious>Voltar</button>
+        <button at-button
+        [ngClass]="!(validatorData$|async)?.residencialDataValid ? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+        [disabled]="!(validatorData$|async)?.residencialDataValid" (click)="nextPage(true, stepperV)" > Próximo</button>
+
+      </div>
+    </mat-step>
+
+    <mat-step label='simulação'  [stepControl]="thirdActive">
+      <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+      <div class="container-button">
+        <button at-button class="button-back btn-layout" matStepperPrevious>Voltar</button>
+        <button at-button
+        [ngClass]="!(validatorData$|async)?.simulacaoDataValid ? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+        [disabled]="!(validatorData$|async)?.simulacaoDataValid" (click)="nextPage(true, stepperV)" > Próximo</button>
+       </div>
+    </mat-step>
+    <mat-step label='cobertura'>
+      <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+      <div class="container-button">
+       <button at-button  class="button-back btn-layout" matStepperPrevious>Voltar</button>
+       <button at-button
+       class="button-next btn-layout"
+       (click)="nextPage(true, stepperV); getPersistencia()" > Próximo</button>
+       </div>
+    </mat-step>
+    <mat-step label='resultado'>
+      <ng-container *ngTemplateOutlet="stepFive"></ng-container>
+      <div class="container-button">
+       <button at-button  class="button-back btn-layout">Voltar</button>
+       </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</ng-template>
+
+<ng-template #bigScreen>
+  <mat-horizontal-stepper
+     linear #stepper >
+     <mat-step label='Dados pessoais' [stepControl]="secondActive">
+      <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+      <div class="container-button">
+      <button
+      at-button
+      [ngClass]="!(validatorData$|async)?.pessoalDataValid? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+      [disabled]="!(validatorData$|async)?.pessoalDataValid"
+      (click)="nextPage(true, stepper)"
+       > Próximo</button>
+      </div>
+    </mat-step>
+
+    <mat-step label='dados residenciais' [stepControl]="thirdActive">
+      <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+      <div class="container-button">
+        <button at-button class="button-back btn-layout" matStepperPrevious>Voltar</button>
+        <button at-button
+        [ngClass]="!(validatorData$|async)?.residencialDataValid ? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+        [disabled]="!(validatorData$|async)?.residencialDataValid" (click)="nextPage(true, stepper)" > Próximo</button>
+
+      </div>
+    </mat-step>
+
+    <mat-step label='simulação' >
+      <ng-container *ngTemplateOutlet="stepThree" ></ng-container>
+      <div class="container-button">
+       <button at-button class="button-back btn-layout" matStepperPrevious>Voltar</button>
+       <button at-button
+       [ngClass]="!(validatorData$|async)?.simulacaoDataValid ? 'btn-disabled btn-layout' : 'button-next btn-layout'"
+       [disabled]="!(validatorData$|async)?.simulacaoDataValid" (click)="nextPage(true, stepper)" > Próximo</button>
+       </div>
+    </mat-step>
+    <mat-step label='cobertura'>
+      <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+      <div class="container-button">
+
+       <button at-button matStepperPrevious class="button-back btn-layout" matStepperPrevious>Voltar</button>
+       <button at-button
+       class="button-next btn-layout"
+       (click)="nextPage(true, stepper); getPersistencia()" > Próximo</button>
+       </div>
+    </mat-step>
+    <mat-step label='resultado'>
+      <ng-container *ngTemplateOutlet="stepFive"></ng-container>
+      <div class="container-button">
+       <button at-button matStepperPrevious class="button-back btn-layout">Voltar</button>
+       </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>
+
+
+<div class="container-fullscreen-button show-hide-icon">
+  <div class="open-in-full fullscreen-icon-layout" (click)="openInFullScreenInfosHomeInsurance()">
+    <mat-icon>open_in_full</mat-icon>
+  </div>
+
+</div>

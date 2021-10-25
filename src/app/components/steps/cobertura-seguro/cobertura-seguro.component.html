@@ -1,0 +1,23 @@
+<div class="container-cobertura-seguro">
+  <p class="text-title grey-text-color">
+    agora que já sabe o que são coberturas, vamos selecionar as suas
+  </p>
+  <div class="container-cards">
+
+    <div class="card " [ngClass]="getIndexOf(cobertura) ? 'selected':'unselected'" *ngFor="let cobertura of coberturas" [id]="cobertura.id_cobertura" (click)="cardSelected(cobertura)">
+        <div class="container-first">
+        <div class="card-title">
+          {{cobertura.nome}}
+        </div>
+        <div class="card-text">
+          {{cobertura.resumo}}
+        </div>
+      </div>
+        <div class="container-button-dialog">
+          <div class="button-dialog-info">
+            i
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

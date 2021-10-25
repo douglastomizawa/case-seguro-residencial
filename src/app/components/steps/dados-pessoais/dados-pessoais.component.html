@@ -1,0 +1,89 @@
+<div class="container-data-personal">
+  <p class="text-title grey-text-color">
+    para iniciar, vamos precisar de algumas informações sobre você
+  </p>
+  <form class="form-data-personal" [formGroup]="dataPersonal">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome*</mat-label>
+      <input matInput formControlName="name"
+      autocomplete="name" [value]="(pessoalData$ | async)?.nome"
+      [errorStateMatcher]="matcher"
+      (input)='validatorForm()'
+
+      (ngModelChange)="functionsService.changePessoalValueRedux('nome', $event)"
+      type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Sobrenome *</mat-label>
+      <input matInput
+      formControlName="surname"
+      autocomplete="additional-name"
+      [value]="(pessoalData$ | async)?.sobrenome"
+      type="text "
+      (ngModelChange)="functionsService.changePessoalValueRedux('sobrenome', $event)">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>CPF*</mat-label>
+      <input matInput formControlName="cpf" autocomplete="off"
+      [value]="(pessoalData$ | async)?.cpf"
+      (input)='validatorForm()'
+      (ngModelChange)="functionsService.changePessoalValueRedux('cpf', $event)"
+      mask="000.000.000.00">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" (focus)="picker.open()">
+      <mat-label>data de nascimento *</mat-label>
+      <input matInput [matDatepicker]="picker"
+      (focus)="picker.open()"
+      [min]="minDate"
+      [max]="maxDate"
+      [value]="(pessoalData$ | async)?.birthDate"
+      (dateChange)='validatorForm()'
+      (dateChange)="functionsService.changePessoalValueRedux('birthDate', $event.value)">
+      <mat-datepicker-toggle matSuffix [for]="picker" (focus)="picker.open()" ></mat-datepicker-toggle>
+      <mat-datepicker #picker (focus)="picker.open()" ></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email *</mat-label>
+      <input type="email" #email matInput formControlName="email" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com" autocomplete="email"
+             (input)='validatorForm()'
+             [value]="(pessoalData$ | async)?.email"
+             (ngModelChange)="functionsService.changePessoalValueRedux('email', $event)">
+      <mat-error *ngIf=" email.value.length > 0">
+       Inserir um email válido
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required') && email.value.length == 0">
+       Email é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Celular *</mat-label>
+      <input matInput formControlName="phone"
+      (input)='validatorForm()'
+      [value]="(pessoalData$ | async)?.phone"
+      mask="(00) 00000-0000"
+      (ngModelChange)="functionsService.changePessoalValueRedux('phone', $event)">
+    </mat-form-field>
+  </form>
+    <div class="container-text-autorization">
+      <p class="text-autorization grey-text-color">
+        Os dados inseridos por você poderão ser compartilhados com empresas parceiras para cotação e contratação dos produtos escolhidos e poderão ser tratados de acordo com a nossa Política de Privacidade disponível em nossos sites e aplicativos.      </p>
+    </div>
+    <div class="container-seguro">
+      <p class="text-autorization grey-text-color">
+        Porto Seguro Cia. de Seguros Gerais. CNPJ 61.198.164/0001-60. Consulte as Condições Gerais em <a href="www.portoseguro.com.br/seguro-residencial">www.portoseguro.com.br/seguro-residencial</a>. Processos SUSEP: Residência 15414.002288/2005-85. Responsabilidade Civil Patrimonial 15414.900937/2017-49. O registro do produto é automático e não representa aprovação ou recomendação por parte da Susep representando, exclusivamente, sua adequação às normas em vigor.
+      <p>
+    </div>
+    <div class="container-text-autorization">
+      <p class="text-autorization grey-text-color">
+        A Itaú Corretora de Seguros S.A comercializa com exclusividade os produtos: seguro residencial e seguro automóvel do Grupo Porto Seguro S.A, na figura de corretora de seguros.
+      </p>
+    </div>
+</div>
